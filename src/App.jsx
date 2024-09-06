@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [inp, setInp] = useState(null);
+  const [inp, setInp] = useState("");
 
   return (
     <>
@@ -22,6 +22,9 @@ function App() {
               className="bg-gray-200 p-3 w-4/5 rounded-full text-black outline-none"
               placeholder="Add Your Text"
               type="text"
+              onChange={(event) =>{
+                setInp(event.target.value)
+              }}
             />
             <button className="rounded-full bg-orange-400 w-24 p-2 text-white text-lg">
               Add
@@ -30,7 +33,7 @@ function App() {
         </div>
         <br />
         <ul className="text-gray-700 text-xl">
-          <li>sdnfvjsdbg</li>
+          <li>{inp}</li>
         </ul>
       </div>
     </>
