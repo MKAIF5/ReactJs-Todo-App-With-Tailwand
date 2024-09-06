@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [inp, setInp] = useState(null);
+
   return (
     <>
       <div className="w-2/5 p-8 bg-white my-40 mx-auto rounded-2xl">
@@ -19,13 +22,16 @@ function App() {
               className="bg-gray-200 p-3 w-4/5 rounded-full text-black outline-none"
               placeholder="Add Your Text"
               type="text"
-              id="inp"
             />
             <button className="rounded-full bg-orange-400 w-24 p-2 text-white text-lg">
               Add
             </button>
           </form>
         </div>
+        <br />
+        <ul className="text-gray-700 text-xl">
+          <li>sdnfvjsdbg</li>
+        </ul>
       </div>
     </>
   );
