@@ -3,6 +3,12 @@ import "./App.css";
 
 function App() {
   const [inp, setInp] = useState("");
+  const [showValue , setShowValue] = useState([]);
+
+  const addValue = () =>{
+    setShowValue([...showValue , inp])
+    setInp("")
+  }
 
   return (
     <>
@@ -17,24 +23,29 @@ function App() {
         </div>
         <br />
         <div>
-          <form>
             <input
               className="bg-gray-200 p-3 w-4/5 rounded-full text-black outline-none"
+              value={inp}
               placeholder="Add Your Text"
               type="text"
               onChange={(event) => {
                 setInp(event.target.value);
               }}
             />
-            <button className="rounded-full bg-orange-400 w-24 p-2 text-white text-lg">
+            <button
+             className="rounded-full bg-orange-400 w-24 p-2 text-white text-lg"
+             onClick={addValue}
+             >
               Add
             </button>
-            
-          </form>
         </div>
         <br />
         <ul className="text-gray-700 text-xl">
-          <li>{inp}</li>
+          {
+            showValue.map((items , index) =>(
+              <li key={index}>{items}</li>
+            ))
+          }
         </ul>
       </div>
     </>
