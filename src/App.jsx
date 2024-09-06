@@ -22,8 +22,8 @@ function App() {
               className="bg-gray-200 p-3 w-4/5 rounded-full text-black outline-none"
               placeholder="Add Your Text"
               type="text"
-              onChange={(event) =>{
-                setInp(event.target.value)
+              onChange={(event) => {
+                setInp(event.target.value);
               }}
             />
             <button className="rounded-full bg-orange-400 w-24 p-2 text-white text-lg">
