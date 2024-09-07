@@ -10,9 +10,11 @@ function App() {
     setInp("");
   };
 
-  // const remove = () => {
-
-  // };
+  const removeValue = (index) => {
+    const removeList = [...showValue];
+    removeList.splice(index ,1);
+    setShowValue(removeList)
+  };
 
   return (
     <>
@@ -51,8 +53,8 @@ function App() {
               >
                 {items}
                 <span
-                  onClick={() => remove(index)}
                   className="absolute top-2 right-2 cursor-pointer hover:bg-slate-100 rounded p-1"
+                  onClick={() => removeValue(index)}
                 >
                   &#10005;
                 </span>
