@@ -3,12 +3,12 @@ import "./App.css";
 
 function App() {
   const [inp, setInp] = useState("");
-  const [showValue , setShowValue] = useState([]);
+  const [showValue, setShowValue] = useState([]);
 
-  const addValue = () =>{
-    setShowValue([...showValue , inp])
-    setInp("")
-  }
+  const addValue = () => {
+    setShowValue([...showValue, inp]);
+    setInp("");
+  };
 
   return (
     <>
@@ -23,29 +23,27 @@ function App() {
         </div>
         <br />
         <div>
-            <input
-              className="bg-gray-200 p-3 w-4/5 rounded-full text-black outline-none"
-              value={inp}
-              placeholder="Add Your Text"
-              type="text"
-              onChange={(event) => {
-                setInp(event.target.value);
-              }}
-            />
-            <button
-             className="rounded-full bg-orange-400 w-24 p-2 text-white text-lg"
-             onClick={addValue}
-             >
-              Add
-            </button>
+          <input
+            className="bg-gray-200 p-3 w-4/5 rounded-full text-black outline-none"
+            value={inp}
+            placeholder="Add Your Text"
+            type="text"
+            onChange={(event) => {
+              setInp(event.target.value);
+            }}
+          />
+          <button
+            className="rounded-full bg-orange-400 w-24 p-2 text-white text-lg"
+            onClick={addValue}
+          >
+            Add
+          </button>
         </div>
         <br />
         <ul className="text-gray-700 text-xl">
-          {
-            showValue.map((items , index) =>(
-              <li key={index}>{items}</li>
-            ))
-          }
+          {showValue.map((items, index) => (
+            <li key={index}>{items}</li>
+          ))}
         </ul>
       </div>
     </>
