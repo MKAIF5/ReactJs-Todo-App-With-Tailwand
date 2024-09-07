@@ -10,6 +10,8 @@ function App() {
     setInp("");
   };
 
+  const remove = () => {};
+
   return (
     <>
       <div className="w-2/5 p-8 bg-white my-40 mx-auto rounded-2xl">
@@ -42,9 +44,17 @@ function App() {
         <br />
         <ul className="text-gray-700 text-xl flex justify-around">
           {showValue.map((items, index) => (
-            <li className=" bg-slate-200 p-2 rounded-xl w-full" key={index}>
+            <li
+              className=" bg-slate-200 p-2 rounded-xl w-full relative"
+              key={index}
+            >
               {items}
-              <span>&#10005;</span>
+              <span
+                onClick={remove}
+                className="absolute top-2 right-5 cursor-pointer"
+              >
+                &#10005;
+              </span>
             </li>
           ))}
         </ul>
