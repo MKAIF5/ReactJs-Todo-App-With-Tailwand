@@ -4,21 +4,38 @@ import "./App.css";
 function App() {
   const [inp, setInp] = useState("");
   const [showValue, setShowValue] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+  const [editText, setEditText] = useState("");
 
   const addValue = () => {
-    setShowValue([...showValue, inp]);
+    if (editIndex === null) {
+      setShowValue([...showValue, inp]);
+    } else {
+      const updatedValues = showValue.map((item, index) =>
+        index === editIndex ? editText : item
+      );
+      setShowValue(updatedValues);
+      setEditIndex(null);
+      setEditText("");
+    }
     setInp("");
   };
-  const handleAdd = (e) =>{
-    if(e.keyCode === 13){
-      addValue()
+
+  const handleAdd = (e) => {
+    if (e.keyCode === 13) {
+      addValue();
     }
-  }
+  };
 
   const removeValue = (index) => {
     const removeList = [...showValue];
     removeList.splice(index, 1);
-    setShowValue(removeList)
+    setShowValue(removeList);
+  };
+
+  const startEdit = (index) => {
+    setEditIndex(index);
+    setEditText(showValue[index]);
   };
 
   return (
@@ -36,17 +53,17 @@ function App() {
         <div className="flex gap-1">
           <input
             className="bg-gray-200 p-3 w-full rounded-full text-black outline-none"
-            value={inp}
+            value={editIndex === null ? inp : editText}
             placeholder="Add Your Text"
             type="text"
-            onChange={(event) => setInp(event.target.value)}
+            onChange={(event) => editIndex === null ? setInp(event.target.value) : setEditText(event.target.value)}
             onKeyDown={handleAdd}
           />
           <button
             className="rounded-3xl bg-orange-400 p-2 text-white text-lg flex-shrink-0"
             onClick={addValue}
           >
-            Add
+            {editIndex === null ? "Add" : "Update"}
           </button>
         </div>
         <br />
@@ -59,10 +76,42 @@ function App() {
               >
                 {items}
                 <span
+                  className="absolute top-2 right-8 cursor-pointer hover:bg-slate-100 rounded p-1"
+                  onClick={() => startEdit(index)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-gray-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 3a2 2 0 00-2.828 0L7.293 8.707a1 1 0 00-.293.707v4.586a1 1 0 00.293.707l4.879 4.878a1 1 0 00.707.293h4.586a1 1 0 00.707-.293l7.879-7.879a2 2 0 000-2.828l-7.879-7.879zM13 7l4 4m0-4L13 11"
+                    />
+                  </svg>
+                </span>
+                <span
                   className="absolute top-2 right-2 cursor-pointer hover:bg-slate-100 rounded p-1"
                   onClick={() => removeValue(index)}
                 >
-                  &#10005;
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-gray-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
                 </span>
               </li>
             ))}
