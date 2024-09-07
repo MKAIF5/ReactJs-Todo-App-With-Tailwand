@@ -9,10 +9,15 @@ function App() {
     setShowValue([...showValue, inp]);
     setInp("");
   };
+  const handleAdd = (e) =>{
+    if(e.keyCode === 13){
+      addValue()
+    }
+  }
 
   const removeValue = (index) => {
     const removeList = [...showValue];
-    removeList.splice(index ,1);
+    removeList.splice(index, 1);
     setShowValue(removeList)
   };
 
@@ -35,6 +40,7 @@ function App() {
             placeholder="Add Your Text"
             type="text"
             onChange={(event) => setInp(event.target.value)}
+            onKeyDown={handleAdd}
           />
           <button
             className="rounded-3xl bg-orange-400 p-2 text-white text-lg flex-shrink-0"
