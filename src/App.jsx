@@ -40,9 +40,12 @@ function App() {
           </button>
         </div>
         <br />
-        <ul className="text-gray-700 text-xl">
+        <ul className="text-gray-700 text-xl flex justify-around">
           {showValue.map((items, index) => (
-            <li key={index}>{items}</li>
+            <li className=" bg-slate-200 p-2 rounded-xl w-full" key={index}>
+              {items}
+              <span>&#10005;</span>
+            </li>
           ))}
         </ul>
       </div>
