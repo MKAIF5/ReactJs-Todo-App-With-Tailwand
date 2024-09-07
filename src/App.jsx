@@ -10,7 +10,9 @@ function App() {
     setInp("");
   };
 
-  const remove = () => {};
+  const remove = () => {
+
+   };
 
   return (
     <>
@@ -42,22 +44,26 @@ function App() {
           </button>
         </div>
         <br />
-        <ul className="text-gray-700 text-xl flex justify-around">
+        <div>
+
+        <ul className="text-gray-700 text-xl">
           {showValue.map((items, index) => (
             <li
-              className=" bg-slate-200 p-2 rounded-xl w-full relative"
-              key={index}
+            className=" bg-slate-200 p-2 rounded-xl w-full relative"
+            key={index}
             >
               {items}
               <span
                 onClick={remove}
-                className="absolute top-2 right-5 cursor-pointer"
-              >
+                className="absolute top-2 right-5 cursor-pointer hover:bg-slate-100 rounded"
+                >
                 &#10005;
               </span>
             </li>
           ))}
+          <br />
         </ul>
+          </div>
       </div>
     </>
   );
